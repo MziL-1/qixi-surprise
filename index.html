@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>有人想问你一些问题…</title>
+    
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 样式 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bottle.css">
+    <link rel="stylesheet" href="css/memory.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/starry.css">
+</head>
+<body>
+    <!-- 页面容器 -->
+    <div class="app">
+        <!-- 导航点 -->
+        <div class="nav-dots">
+            <div class="nav-dot active" data-section="0"></div>
+            <div class="nav-dot" data-section="1"></div>
+            <div class="nav-dot" data-section="2"></div>
+            <div class="nav-dot" data-section="3"></div>
+            <div class="nav-dot" data-section="4"></div>
+            <div class="nav-dot" data-section="5"></div>
+        </div>
+        
+        <!-- 第一屏：开场动画 -->
+        <section class="page page-1" id="page-1">
+            <div class="opening-animation">
+                <div class="opening-text">星空探险家</div>
+                <div class="scroll-hint">
+                    <span>向下滑动，开始旅程</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+            <canvas id="star-canvas" class="star-canvas"></canvas>
+        </section>
+        
+        <!-- 第二屏：问题魔瓶 -->
+        <section class="page page-2" id="page-2">
+            <div class="bottle-container">
+                <div class="bottle">
+                    <div class="bottle-glass"></div>
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-cork"></div>
+                    <div class="bottle-cubes">
+                        <div class="cube cube-1"></div>
+                        <div class="cube cube-2"></div>
+                        <div class="cube cube-3"></div>
+                        <div class="cube cube-4"></div>
+                        <div class="cube cube-5"></div>
+                    </div>
+                </div>
+                <div class="cube-display">
+                    <div class="cube-3d">
+                        <div class="cube-front"></div>
+                        <div class="cube-back"></div>
+                    </div>
+                </div>
+                <div class="question-display">
+                    <div class="question-text"></div>
+                    <button class="btn btn-next">再抽一个</button>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第三屏：旅行地点 -->
+        <section class="page page-3" id="page-3">
+            <div class="memory-container">
+                <p class="memory-scroll-hint">← 滑动查看更多 →</p>
+                <div class="memory-cards">
+                    <div class="memory-card" data-bg="https://images.unsplash.com/photo-1777276516287-125ae8edc09a?w=600&q=80&fit=crop">
+                        <div class="memory-card-inner">
+                            <div class="card-front">
+                                <p class="card-title">下一站</p>
+                                <p class="card-destination">月球表面 🌙</p>
+                            </div>
+                            <div class="card-back">
+                                <p class="memory-text">踩在月球上，脚印会一直留在那</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memory-card" data-bg="https://images.unsplash.com/photo-1743125612767-0f54571fb1fa?w=600&q=80&fit=crop">
+                        <div class="memory-card-inner">
+                            <div class="card-front">
+                                <p class="card-title">下一站</p>
+                                <p class="card-destination">银河边的咖啡馆 ☕</p>
+                            </div>
+                            <div class="card-back">
+                                <p class="memory-text">点一杯星光拿铁，看银河倒映在杯子里</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memory-card" data-bg="https://images.unsplash.com/photo-1769535430078-a41b6cee9871?w=600&q=80&fit=crop">
+                        <div class="memory-card-inner">
+                            <div class="card-front">
+                                <p class="card-title">下一站</p>
+                                <p class="card-destination">世界尽头的灯塔 🗼</p>
+                            </div>
+                            <div class="card-back">
+                                <p class="memory-text">灯塔守护每一只迷路的船，就像我守护你</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memory-card" data-bg="https://images.unsplash.com/photo-1778598847371-e0c0d49db3e2?w=600&q=80&fit=crop">
+                        <div class="memory-card-inner">
+                            <div class="card-front">
+                                <p class="card-title">下一站</p>
+                                <p class="card-destination">云朵工厂 ☁️</p>
+                            </div>
+                            <div class="card-back">
+                                <p class="memory-text">把棉花糖做成云朵，挂在天上</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="memory-card" data-bg="https://images.unsplash.com/photo-1775193850619-34ad5cd84874?w=600&q=80&fit=crop">
+                        <div class="memory-card-inner">
+                            <div class="card-front">
+                                <p class="card-title">下一站</p>
+                                <p class="card-destination">时间邮局 ✉️</p>
+                            </div>
+                            <div class="card-back">
+                                <p class="memory-text">寄一封信给未来，收件人是你</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="memory-message">每一站，都想和你一起去。</div>
+            </div>
+        </section>
+        
+        <!-- 第四屏：默契测试 -->
+        <section class="page page-4" id="page-4">
+            <div class="quiz-container">
+                <h2 class="quiz-title">测测我们的默契度 🤝</h2>
+                <div class="quiz-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="quiz-questions">
+                    <div class="quiz-question active">
+                        <p class="question">出门旅行你第一件事是？</p>
+                        <div class="options">
+                            <button class="option">A. 先找吃的</button>
+                            <button class="option">B. 先拍照</button>
+                            <button class="option">C. 先逛逛看</button>
+                            <button class="option">D. 先歇会儿</button>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <p class="question">你更喜欢什么时候？</p>
+                        <div class="options">
+                            <button class="option">A. 早晨</button>
+                            <button class="option">B. 午后</button>
+                            <button class="option">C. 傍晚</button>
+                            <button class="option">D. 深夜</button>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <p class="question">你觉得旅行最重要的是？</p>
+                        <div class="options">
+                            <button class="option">A. 吃到好吃的</button>
+                            <button class="option">B. 看到美景</button>
+                            <button class="option">C. 和对的人一起</button>
+                            <button class="option">D. 拍到好照片</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-result">
+                    <div class="result-text">默契等级</div>
+                    <div class="result-level">心有灵犀</div>
+                    <div class="result-desc">嘿嘿，咱俩选的一毛一样，很有默契了 ✨</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第五屏：星空许愿 -->
+        <section class="page page-5" id="page-5">
+            <div class="starry-container">
+                <canvas id="starry-canvas" class="starry-canvas"></canvas>
+                <div class="wish-star">⭐</div>
+                <div class="wish-input-container">
+                    <input type="text" class="wish-input" placeholder="写下你的愿望…">
+                    <button class="btn btn-wish">许愿</button>
+                </div>
+                <form id="wish-form" style="display:none;">
+                    <input type="text" name="wish" data-fs-field>
+                    <input type="text" name="_subject" value="七夕许愿">
+                    <button type="submit" data-fs-submit-btn>提交</button>
+                </form>
+                <div data-fs-success style="display:none;">愿望已送出 ✨</div>
+                <div data-fs-error style="display:none;"></div>
+                <div class="wish-message">我的愿望是——和你一起看明年的七夕星空</div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 背景音乐 -->
+    <audio id="bgm" loop preload="auto">
+        <source src="assets/audio/bgm.mp3" type="audio/mpeg">
+    </audio>
+    <button class="bgm-toggle" id="bgm-toggle">🔊</button>
+    
+    <!-- 脚本 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/bottle.js"></script>
+    <script src="js/memory.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/wish.js"></script>
+</body>
+</html>

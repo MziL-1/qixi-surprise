@@ -1,0 +1,251 @@
+/* 问题魔瓶模块样式 */
+.bottle-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bottle {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.bottle:hover {
+  transform: scale(1.05);
+}
+
+.bottle-glass {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+}
+
+.bottle-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-15deg);
+}
+
+.bottle-neck {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px 10px 0 0;
+}
+
+.bottle-cork {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 30px;
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  border-radius: 10px 10px 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bottle-cubes {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 160px;
+}
+
+.cube {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.cube-1 {
+  background: var(--color-red);
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.cube-2 {
+  background: var(--color-orange);
+  top: 40%;
+  left: 60%;
+  animation-delay: 0.5s;
+}
+
+.cube-3 {
+  background: var(--color-yellow);
+  top: 60%;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.cube-4 {
+  background: var(--color-green);
+  top: 30%;
+  left: 70%;
+  animation-delay: 1.5s;
+}
+
+.cube-5 {
+  background: var(--color-blue);
+  top: 70%;
+  left: 50%;
+  animation-delay: 2s;
+}
+
+/* 瓶子摇晃动画 */
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
+  20%, 40%, 60%, 80% { transform: rotate(5deg); }
+}
+
+.bottle.shaking {
+  animation: shake 1.5s ease-in-out;
+}
+
+/* 方块显示区域 */
+.cube-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cube-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.cube-3d.flipped {
+  transform: rotateY(180deg);
+}
+
+.cube-front, .cube-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube-front {
+  background: linear-gradient(135deg, #e91e63, #f06292);
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.cube-back {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: rotateY(180deg);
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* 问题显示区域 */
+.question-display {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.question-display.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.question-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+  min-height: 50px;
+  font-family: var(--font-en);
+}
+
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .bottle {
+    width: 160px;
+    height: 240px;
+  }
+  
+  .bottle-glass {
+    height: 160px;
+  }
+  
+  .bottle-neck {
+    width: 50px;
+    height: 60px;
+    top: 40px;
+  }
+  
+  .bottle-cork {
+    width: 60px;
+    height: 25px;
+    top: 25px;
+  }
+  
+  .cube {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .cube-display {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .question-text {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,190 @@
+/* 旅行地点模块样式 - 横向轮播 */
+.memory-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 0 60px 0;
+}
+
+.memory-scroll-hint {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  animation: breathe 2s ease-in-out infinite;
+}
+
+.memory-cards {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 40px;
+  width: 100%;
+  max-width: 100vw;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.memory-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.memory-card {
+  flex: 0 0 280px;
+  height: 380px;
+  scroll-snap-align: center;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.memory-card.flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-front {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+.card-front > * {
+  position: relative;
+  z-index: 2;
+}
+
+.card-title {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.card-destination {
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.4;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #2d1b3d, #3d1b2d);
+  transform: rotateY(180deg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.memory-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+  text-align: center;
+  font-family: var(--font-en);
+}
+
+/* 记忆信息 */
+.memory-message {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-family: var(--font-en);
+  margin-top: 20px;
+}
+
+.memory-message.visible {
+  opacity: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .memory-card {
+    flex: 0 0 250px;
+    height: 340px;
+  }
+  
+  .card-destination {
+    font-size: 18px;
+  }
+  
+  .memory-text {
+    font-size: 16px;
+  }
+  
+  .memory-message {
+    font-size: 16px;
+  }
+  
+  .memory-cards {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .memory-card {
+    flex: 0 0 220px;
+    height: 300px;
+  }
+  
+  .card-front, .card-back {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 13px;
+  }
+  
+  .card-destination {
+    font-size: 16px;
+  }
+  
+  .memory-text {
+    font-size: 14px;
+  }
+}

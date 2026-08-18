@@ -1,0 +1,281 @@
+/* 全局样式 */
+:root {
+  /* 配色方案 */
+  --color-bg-start: #0a0e27;
+  --color-bg-mid1: #1a0a2e;
+  --color-bg-mid2: #2d1b3d;
+  --color-bg-end: #3d1b2d;
+  
+  /* 主色调 */
+  --color-primary: #4a6fa5;
+  --color-secondary: #9b59b6;
+  --color-accent: #e74c3c;
+  
+  /* 点缀色 */
+  --color-gold: #f1c40f;
+  --color-red: #e74c3c;
+  --color-orange: #e67e22;
+  --color-yellow: #f1c40f;
+  --color-green: #2ecc71;
+  --color-blue: #3498db;
+  --color-purple: #9b59b6;
+  --color-pink: #e91e63;
+  
+  /* 字体 */
+  --font-cn: '思源黑体', '站酷快乐体', sans-serif;
+  --font-en: 'Dancing Script', 'Caveat', cursive;
+  
+  /* 圆角 */
+  --border-radius: 16px;
+  
+  /* 动画 */
+  --animation-duration: 500ms;
+  --animation-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 重置样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-cn);
+  color: white;
+  background: var(--color-bg-start);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+}
+
+/* 呼吸光效 */
+@keyframes breathe {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* 浮动动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 闪烁动画 */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* 页面容器 */
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 星空画布 */
+.star-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* 开场动画容器 */
+.opening-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* 开场文字 */
+.opening-text {
+  font-size: 24px;
+  font-family: var(--font-en);
+  white-space: nowrap;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1s forwards;
+}
+
+/* 滚动提示 */
+.scroll-hint {
+  position: absolute;
+  bottom: 15%;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 3s forwards;
+}
+
+.scroll-hint span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+}
+
+.scroll-arrow {
+  font-size: 24px;
+  margin-top: 10px;
+  animation: float 2s ease-in-out infinite;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 导航点 */
+.nav-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 100;
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: white;
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* 按钮样式 */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-cn);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e91e63, #f06292);
+  color: white;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* 背景音乐控制 */
+.bgm-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.bgm-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  :root {
+    --border-radius: 12px;
+  }
+  
+  .nav-dots {
+    right: 10px;
+    gap: 8px;
+  }
+  
+  .nav-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .bgm-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}

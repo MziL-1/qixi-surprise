@@ -1,0 +1,8 @@
+{
+  "name": "qixi-surprise",
+  "version": "1.0.0",
+  "description": "七夕惊喜网页",
+  "scripts": {
+    "dev": "npx http-server -p 8080 -o"
+  }
+}
